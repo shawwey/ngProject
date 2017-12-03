@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import{UserModel} from './UserModel';
+import { Component, OnInit, Inject } from '@angular/core';
+import { UserModel} from './UserModel';
+//方式一和方式二引入
+//import { LoginService } from '../core/login.service';
+//方式三引入
+import { Injectable } from '@angular/core';
 
 @Component({
   selector: 'app-login',
@@ -25,23 +29,36 @@ import{UserModel} from './UserModel';
   `,
   styles: [`
     input {height:30px;width:1000px;}
-  `]
+  `],
+  //方式二引入
+  // providers:[LoginService]
 })
 export class LoginComponent implements OnInit {
- // public user:{username:string,password:string,age:string,eamil:string};
  
+  //方式一
+  //service: LoginService ;
+  //constructor() {
+    //this.service = new LoginService ();
+  //}
+
+  //方式二：
+  //constructor(private service: LoginService) {  }
+
+  //方式三：
+  //在app.module.ts里头的providers定义登录服务
+  // providers: [
+     //{ provide: 'login', useClass: LoginService }]
+
+  constructor(@Inject('login') private service){    }
   //通过对象方式编写
   private user=new UserModel();
-  constructor() {
-     
-  }
 
   ngOnInit() {
    
   }
   onClick(username,password){
+    console.log("结果："+this.service.doLogin(username,password));
     console.log(JSON.stringify(this.user));
-    console.log("username:"+username+"\n\r"+"password:"+password);
   }
 
 }

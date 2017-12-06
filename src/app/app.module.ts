@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+import { RouterModule } from '@angular/router';
+
 import { AppComponent } from './app.component';
 //登录
 import { LoginComponent } from './login/login.component';
@@ -14,18 +16,40 @@ import { ComponentDateComponent } from './component-date/component-date.componen
 //登录服务
 import { LoginService } from './core/login.service';
 
+import { TodoComponent } from './todo/todo.component';
+//引入路由
+import { routing } from './app.route';
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     UserComponent,
     RegisterComponent,
+    TodoComponent,
     ComponentDateComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
-  ],
+    FormsModule,
+    routing,
+    // RouterModule.forRoot([
+    //   {
+    //     path: '',
+    //     redirectTo: 'register',
+    //     pathMatch: 'full'
+    //   },
+    //   {
+    //     path:'login',
+    //     component:LoginComponent
+    //   },
+    //   {
+    //     path:'register',
+    //     component:RegisterComponent
+    //   }
+      
+    //])
+   ],
   providers: [{provide:'login',useClass:LoginService}],
   bootstrap: [AppComponent]
 })

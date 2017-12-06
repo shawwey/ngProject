@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
 
   //方式三：
   //在app.module.ts里头的providers定义登录服务
-  // providers: [
+  //providers: [
      //{ provide: 'login', useClass: LoginService }]
 
   constructor(@Inject('login') private service){    }

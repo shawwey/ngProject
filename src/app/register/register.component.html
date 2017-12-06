@@ -42,5 +42,7 @@
 
   <button type="button" class="btn btn-default" 
       [disabled]="!registerForm.valid" (click)="doSubmit(registerForm.value)">注册</button>
+  <a routerLink="../login">跳转到登录</a>
+  <a [routerLink]="['../user','admin']">带参数跳转</a>
 </form>
 {{registerForm.value|json}}

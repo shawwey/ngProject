@@ -1,5 +1,5 @@
-import { Routes,RouterModule} from '@angular/router';
-import { ModuleWithProviders} from '@angular/core';
+import { Routes,RouterModule } from '@angular/router';
+import { ModuleWithProviders } from '@angular/core';
 
 //要跳转的页面
 import { LoginComponent } from './login/login.component';

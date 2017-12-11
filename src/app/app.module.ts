@@ -17,15 +17,23 @@ import { ComponentDateComponent } from './component-date/component-date.componen
 import { LoginService } from './core/login.service';
 
 import { TodoComponent } from './todo/todo.component';
-//引入路由
+
+import { PostlistComponent } from './postlist/postlist.component'
+//路由的使用
 import { routing } from './app.route';
 
+//Http的使用
+import { HttpModule } from '@angular/http';
+
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryTodoDbService } from './todo/todo-data';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     UserComponent,
     RegisterComponent,
+    PostlistComponent,
     TodoComponent,
     ComponentDateComponent
   ],
@@ -33,6 +41,8 @@ import { routing } from './app.route';
     BrowserModule,
     FormsModule,
     routing,
+    HttpModule,
+    InMemoryWebApiModule.forRoot(InMemoryTodoDbService)
     // RouterModule.forRoot([
     //   {
     //     path: '',
